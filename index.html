@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sam Phan — personal website. A Windows XP-themed corner of the web.">
+  <meta name="theme-color" content="#3a6ea5">
+  <title>samuelphan.com</title>
+
+  <!-- XP.css — Windows XP Luna theme -->
+  <link rel="stylesheet" href="lib/xp.css/XP.css">
+
+  <!-- BaguetteBox.js — Photo gallery lightbox -->
+  <link rel="stylesheet" href="lib/baguettebox.js/baguetteBox.min.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon — simple 'XP' style icon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%233a6ea5' width='32' height='32' rx='4'/%3E%3Ctext fill='white' x='16' y='22' text-anchor='middle' font-size='14' font-family='Arial'%3EXP%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- Desktop area with icons -->
+  <div id="desktop">
+    <div class="desktop-icons" id="desktop-icons" role="grid" aria-label="Desktop icons">
+      <!-- Icons rendered by js/components/desktop.js -->
+    </div>
+
+    <!-- Windows appear here -->
+  </div>
+
+  <!-- Taskbar -->
+  <div id="taskbar" role="toolbar" aria-label="Taskbar">
+    <button id="start-button" aria-label="Start" aria-haspopup="menu" aria-expanded="false">
+      <span style="font-size:16px;line-height:1">⊞</span> Start
+    </button>
+    <div class="taskbar-windows" id="taskbar-windows">
+      <!-- Open window buttons rendered here -->
+    </div>
+    <div class="taskbar-tray">
+      <span id="taskbar-clock" aria-label="Current time">12:00 PM</span>
+    </div>
+  </div>
+
+  <!-- Start Menu -->
+  <div id="start-menu" role="menu" aria-hidden="true" aria-label="Start menu">
+    <div class="start-menu-side">
+      <span>Sam Phan</span>
+    </div>
+    <div class="start-menu-body">
+      <!-- Rendered by js/components/start-menu.js -->
+    </div>
+  </div>
+
+  <!-- Content data — embedded JSON for zero-fetch content loading -->
+  <script type="application/json" id="content-data">
+{
+  "notes": [
+    {
+      "id": "hello-world",
+      "title": "Hello, World!",
+      "date": "2026-05-21",
+      "content": "# Hello, World!\n\nWelcome to my corner of the web. This is my first note.\n\n## About This Site\n\nThis site is built to look and feel like Windows XP — my favorite operating system growing up. It's built with:\n\n- **XP.css** for the visual theme\n- **Vanilla JavaScript** for the window manager and interactivity\n- **BaguetteBox.js** for the photo gallery\n- **No frameworks, no build step** — just HTML, CSS, and JS\n\n## What You'll Find Here\n\n- **Notes** — random thoughts and writing\n- **Photos** — snapshots from my life\n- **Links** — things I find interesting\n- **Minesweeper** — because every XP desktop needs one\n\nFeel free to look around. Double-click the desktop icons or use the Start menu.\n\n*— Sam*"
+    },
+    {
+      "id": "setup-guide",
+      "title": "How to Add Your Own Content",
+      "date": "2026-05-21",
+      "content": "# Adding Your Own Content\n\nThis site reads content from simple files — no CMS, no database.\n\n## Notes\n\nAdd `.md` files to the `content/notes/` folder, then add an entry to the notes array in the `#content-data` script tag in `index.html`.\n\n```json\n{\n  \"id\": \"my-note\",\n  \"title\": \"My Note Title\",\n  \"date\": \"2026-06-01\",\n  \"content\": \"# My Note\\n\\nYour markdown here...\"\n}\n```\n\n## Photos\n\n1. Add image files to `content/photos/`\n2. Update `content/photos/manifest.json` with photo entries\n3. Each entry needs `src` (image path), optional `thumb` and `caption`\n\n## Links\n\nEdit the `links` array in the `#content-data` script tag with `{ \"title\": \"...\", \"url\": \"...\" }` objects.\n\n## Deployment\n\nPush to `main` and GitHub Actions deploys to GitHub Pages automatically. That's it!"
+    }
+  ],
+  "photos": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%233a6ea5' width='400' height='300'/%3E%3Ctext fill='white' x='200' y='140' text-anchor='middle' font-size='24' font-family='Arial'%3E📷 Photos Go Here%3C/text%3E%3Ctext fill='%23c0c0c0' x='200' y='170' text-anchor='middle' font-size='12' font-family='Arial'%3EAdd photos to content/photos/%3C/text%3E%3C/svg%3E",
+      "thumb": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%233a6ea5' width='400' height='300'/%3E%3Ctext fill='white' x='200' y='140' text-anchor='middle' font-size='24' font-family='Arial'%3E📷%3C/text%3E%3C/svg%3E",
+      "caption": "Placeholder — add your own photos"
+    }
+  ],
+  "links": [
+    { "title": "GitHub", "url": "https://github.com" },
+    { "title": "XP.css — Windows XP CSS Framework", "url": "https://botoxparty.github.io/XP.css/" },
+    { "title": "BaguetteBox.js — Lightbox Gallery", "url": "https://feimosi.github.io/baguetteBox.js/" }
+  ]
+}
+  </script>
+
+  <!-- Libraries -->
+  <script src="lib/baguettebox.js/baguetteBox.min.js"></script>
+
+  <!-- Main application (ES module) -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

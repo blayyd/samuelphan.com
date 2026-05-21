@@ -1,0 +1,635 @@
+/**
+ * samuelphan.com — custom CSS on top of XP.css
+ * Adds desktop layout, taskbar, start menu, mobile fallback.
+ */
+
+/* =====================================================
+   Desktop
+   ===================================================== */
+#desktop {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 40px);
+  overflow: hidden;
+  background-color: #3a6ea5;
+}
+
+/* Desktop icons grid */
+.desktop-icons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  padding: 6px 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.3;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  user-select: none;
+}
+
+.desktop-icon:hover,
+.desktop-icon:focus-visible {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.desktop-icon img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+}
+
+.desktop-icon.selected {
+  background: rgba(49,106,197,0.7);
+  border-color: rgba(255,255,255,0.6);
+}
+
+/* =====================================================
+   Taskbar
+   ===================================================== */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(180deg, #0997ff, #0053ee 8%, #0050ee 40%, #06f 88%, #06f 93%, #005bff 95%, #003dd7 96%, #003dd7);
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  z-index: 10000;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  border-top: 1px solid #0055ee;
+}
+
+/* Start button */
+#start-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 10px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 0 0 8px 0;
+  background: linear-gradient(180deg, #3c9a2c, #3c9a2c 40%, #29871e 40%, #29871e);
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2), 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+#start-button:hover {
+  background: linear-gradient(180deg, #45b134, #45b134 40%, #329a25 40%, #329a25);
+}
+
+#start-button:active {
+  background: linear-gradient(180deg, #29871e, #29871e 40%, #3c9a2c 40%, #3c9a2c);
+}
+
+#start-button img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Window buttons on taskbar */
+.taskbar-windows {
+  display: flex;
+  flex: 1;
+  gap: 3px;
+  padding: 0 4px;
+  overflow-x: auto;
+}
+
+.taskbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 10px;
+  min-width: 120px;
+  max-width: 200px;
+  border: none;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #fff, #d8d0c4);
+  font-size: 11px;
+  color: #000;
+  cursor: pointer;
+  box-shadow: inset 1px 1px 0 #fff, 1px 1px 0 rgba(0,0,0,0.2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskbar-btn.active {
+  background: linear-gradient(180deg, #cdcac3, #e8e5dd);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.taskbar-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* System tray (right side of taskbar) */
+.taskbar-tray {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 28px;
+  padding: 0 6px;
+  background: linear-gradient(180deg, #0997ff, #0053ee 8%, #0050ee 40%, #06f 88%, #06f 93%, #005bff 95%, #003dd7 96%, #003dd7);
+  border-left: 1px solid #005ee0;
+  border-radius: 0 0 2px 2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+#taskbar-clock {
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  padding: 0 4px;
+}
+
+/* =====================================================
+   Start Menu
+   ===================================================== */
+#start-menu {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  width: 340px;
+  background: #fff;
+  border: 1px solid #0054e3;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 2px -1px 8px rgba(0,0,0,0.3), inset 0 1px 0 #fff;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#start-menu.open {
+  display: flex;
+}
+
+.start-menu-side {
+  width: 26px;
+  background: linear-gradient(180deg, #3c9a2c, #29871e);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.start-menu-side span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  letter-spacing: 2px;
+}
+
+.start-menu-body {
+  flex: 1;
+  padding: 0;
+  background: #fff;
+}
+
+.start-menu-section {
+  padding: 8px 0;
+  border-bottom: 1px solid #d8d0c4;
+}
+
+.start-menu-section:last-child {
+  border-bottom: none;
+}
+
+.start-menu-section h3 {
+  font-size: 11px;
+  color: #0054e3;
+  font-weight: bold;
+  padding: 0 16px 2px;
+  margin: 0;
+}
+
+.start-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #000;
+}
+
+.start-menu-item:hover,
+.start-menu-item:focus-visible {
+  background: #316ac5;
+  color: #fff;
+}
+
+.start-menu-item img {
+  width: 24px;
+  height: 24px;
+}
+
+/* =====================================================
+   Window overrides (XP theme enhancements)
+   ===================================================== */
+.window {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  min-height: 150px;
+}
+
+.window.maximized {
+  border-radius: 0;
+}
+
+.window-body {
+  flex: 1;
+  overflow: auto;
+  padding: 8px;
+  background: #ece9d8;
+}
+
+/* =====================================================
+   Content window styles
+   ===================================================== */
+.notes-list,
+.photos-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.note-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.note-item:hover {
+  background: #fff;
+  border-color: #7f9db9;
+}
+
+.note-meta {
+  font-size: 11px;
+  color: #666;
+}
+
+.note-content {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #d8d0c4;
+  min-height: 200px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.note-content h1 { font-size: 18px; margin: 0 0 8px; }
+.note-content h2 { font-size: 15px; margin: 16px 0 4px; }
+.note-content p { margin: 0 0 8px; }
+.note-content ul { margin: 0 0 8px; padding-left: 20px; }
+.note-content code {
+  background: #f0f0f0;
+  padding: 1px 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+.note-content pre {
+  background: #f0f0f0;
+  border: 1px solid #d8d0c4;
+  padding: 8px;
+  overflow-x: auto;
+  font-size: 12px;
+}
+.note-content blockquote {
+  border-left: 3px solid #0054e3;
+  margin: 0 0 8px;
+  padding: 4px 12px;
+  color: #555;
+}
+
+/* =====================================================
+   CMD / Terminal window
+   ===================================================== */
+.cmd-body {
+  background: #000;
+  color: #c0c0c0;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  padding: 8px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.cmd-output {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.cmd-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.cmd-prompt {
+  color: #c0c0c0;
+  white-space: pre;
+}
+
+.cmd-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #c0c0c0;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  caret-color: #c0c0c0;
+}
+
+/* =====================================================
+   Minesweeper styles
+   ===================================================== */
+.minesweeper-board {
+  display: inline-grid;
+  gap: 1px;
+  background: #808080;
+  border: 3px solid;
+  border-color: #fff #808080 #808080 #fff;
+  padding: 2px;
+}
+
+.minesweeper-cell {
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-color: #fff #808080 #808080 #fff;
+  background: #c0c0c0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  line-height: 1;
+}
+
+.minesweeper-cell:active {
+  border-color: #808080 #fff #fff #808080;
+}
+
+.minesweeper-cell.revealed {
+  border: 1px solid #808080;
+  background: #c0c0c0;
+}
+
+.minesweeper-cell.flagged {
+  color: #c00;
+}
+
+.minesweeper-cell .mine {
+  font-size: 14px;
+}
+
+.minesweeper-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #808080 #fff #fff #808080;
+  margin-bottom: 4px;
+}
+
+.minesweeper-counter {
+  background: #000;
+  color: #f00;
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  padding: 2px 6px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.minesweeper-face {
+  width: 30px;
+  height: 30px;
+  border: 3px solid;
+  border-color: #fff #808080 #808080 #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c0c0c0;
+}
+
+.minesweeper-face:active {
+  border-color: #808080 #fff #fff #808080;
+}
+
+/* =====================================================
+   Photo Gallery styles
+   ===================================================== */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  padding: 4px;
+}
+
+.photo-thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid #7f9db9;
+  cursor: pointer;
+  background: #fff;
+}
+
+.photo-thumb:hover {
+  border-color: #0054e3;
+}
+
+.photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-thumb .caption {
+  font-size: 10px;
+  color: #666;
+  padding: 2px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Empty state placeholders */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  color: #666;
+  text-align: center;
+  min-height: 120px;
+}
+
+.empty-state .icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+/* =====================================================
+   Links list
+   ===================================================== */
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: #000;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.link-item:hover {
+  background: #fff;
+  border-color: #7f9db9;
+}
+
+.link-item .link-title {
+  font-weight: bold;
+}
+
+.link-item .link-url {
+  color: #666;
+  font-size: 11px;
+}
+
+/* =====================================================
+   Mobile fallback (<768px)
+   ===================================================== */
+@media (max-width: 767px) {
+  #desktop {
+    height: calc(100vh - 48px);
+    background: #3a6ea5;
+  }
+
+  #taskbar {
+    height: 48px;
+  }
+
+  #start-menu {
+    width: 100%;
+    bottom: 48px;
+  }
+
+  .window {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0;
+  }
+
+  .desktop-icons {
+    flex-direction: row;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .desktop-icon {
+    width: 64px;
+    font-size: 10px;
+  }
+
+  .desktop-icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .minesweeper-cell {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}
+
+/* =====================================================
+   Accessibility: focus indicators, reduced motion
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #0054e3;
+  outline-offset: 1px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
