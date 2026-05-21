@@ -1,0 +1,173 @@
+/* ===== Picture Viewer ===== */
+
+/* Container */
+.picture-viewer-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ece9d8;
+  overflow: hidden;
+}
+
+/* ===== XP-style Toolbar ===== */
+.pv-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px 4px;
+  background: linear-gradient(180deg, #f5f3ed 0%, #ece9db 10%, #e5e1d2 30%, #ddd9c9 60%, #d8d4c3 100%);
+  border-bottom: 1px solid #aca899;
+  flex-shrink: 0;
+  min-height: 28px;
+}
+
+.pv-toolbar-separator {
+  width: 1px;
+  height: 20px;
+  background: #aca899;
+  margin: 0 3px;
+}
+
+.pv-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 2px 6px;
+  min-width: 24px;
+  height: 22px;
+  font-size: 11px;
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  color: #1a1a1a;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.pv-btn:hover {
+  background: linear-gradient(180deg, #ffe7b8 0%, #ffd68a 50%, #ffc45a 100%);
+  border-color: #f5b334;
+}
+
+.pv-btn:active {
+  background: linear-gradient(180deg, #e8c48a 0%, #d4b070 50%, #c8a460 100%);
+  border-color: #c89840;
+}
+
+.pv-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  background: transparent;
+  border-color: transparent;
+}
+
+.pv-btn .pv-btn-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pv-btn .pv-btn-label {
+  font-size: 11px;
+}
+
+/* ===== Image Display Area ===== */
+.pv-image-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3d3d3d;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+
+.pv-image-area img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.15s ease;
+  display: block;
+}
+
+/* Zoom modes */
+.pv-image-area.best-fit img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform: none;
+}
+
+.pv-image-area.actual-size img {
+  max-width: none;
+  max-height: none;
+  object-fit: none;
+  transform: none;
+}
+
+.pv-image-area.zoomed img {
+  object-fit: none;
+}
+
+/* No photo placeholder */
+.pv-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  gap: 8px;
+  user-select: none;
+}
+
+.pv-empty-state .pv-empty-icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.pv-empty-state .pv-empty-text {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* ===== Status Bar ===== */
+.pv-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px;
+  background: linear-gradient(180deg, #e8e4d6 0%, #dbd6c5 50%, #cec9b7 100%);
+  border-top: 1px solid #aca899;
+  font-size: 11px;
+  color: #1a1a1a;
+  flex-shrink: 0;
+  min-height: 20px;
+  user-select: none;
+}
+
+.pv-statusbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pv-statusbar-right {
+  color: #666;
+  font-size: 10px;
+}
+
+/* Loading spinner for image load */
+.pv-image-area.loading::after {
+  content: 'Loading...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  opacity: 0.7;
+}

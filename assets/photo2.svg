@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0533"/>
+      <stop offset="40%" stop-color="#2d1b69"/>
+      <stop offset="80%" stop-color="#e86848"/>
+      <stop offset="100%" stop-color="#f5a623"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky2)"/>
+  <!-- Stars -->
+  <circle cx="100" cy="50" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="250" cy="80" r="1" fill="white" opacity="0.6"/>
+  <circle cx="400" cy="30" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="550" cy="60" r="1" fill="white" opacity="0.7"/>
+  <circle cx="700" cy="40" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="150" cy="120" r="1" fill="white" opacity="0.5"/>
+  <circle cx="650" cy="100" r="1" fill="white" opacity="0.6"/>
+  <!-- Moon -->
+  <circle cx="650" cy="100" r="35" fill="#f5e6b8"/>
+  <circle cx="665" cy="90" r="30" fill="#2d1b69"/>
+  <!-- Silhouette mountains -->
+  <polygon points="0,450 80,300 160,450" fill="#0d0d1a"/>
+  <polygon points="100,450 220,280 340,450" fill="#0a0a15"/>
+  <polygon points="280,450 400,250 520,450" fill="#0d0d1a"/>
+  <polygon points="450,450 560,300 670,450" fill="#0a0a15"/>
+  <polygon points="600,450 720,270 800,450" fill="#0d0d1a"/>
+  <!-- Ground -->
+  <rect x="0" y="450" width="800" height="150" fill="#0d0d1a"/>
+  <!-- Reflection of sun/moon on water -->
+  <rect x="620" y="460" width="60" height="3" fill="#f5e6b8" opacity="0.2" rx="1"/>
+  <rect x="630" y="475" width="40" height="2" fill="#f5e6b8" opacity="0.15" rx="1"/>
+</svg>

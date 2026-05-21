@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="30%" stop-color="#f7c59f"/>
+      <stop offset="60%" stop-color="#efefd0"/>
+      <stop offset="100%" stop-color="#004e89"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sunset)"/>
+  <!-- Sun -->
+  <circle cx="400" cy="320" r="80" fill="#f7c59f" opacity="0.8"/>
+  <circle cx="400" cy="320" r="60" fill="#ff6b35" opacity="0.9"/>
+  <circle cx="400" cy="320" r="45" fill="#ff4500" opacity="0.7"/>
+  <!-- Clouds -->
+  <ellipse cx="200" cy="100" rx="90" ry="30" fill="#efefd0" opacity="0.5"/>
+  <ellipse cx="250" cy="90" rx="60" ry="25" fill="#efefd0" opacity="0.4"/>
+  <ellipse cx="600" cy="130" rx="80" ry="25" fill="#efefd0" opacity="0.4"/>
+  <ellipse cx="650" cy="120" rx="50" ry="20" fill="#efefd0" opacity="0.3"/>
+  <!-- Silhouettes - trees -->
+  <g fill="#002a4a">
+    <polygon points="80,600 80,350 60,600"/>
+    <polygon points="80,350 50,400 110,400"/>
+    <polygon points="160,600 160,380 140,600"/>
+    <polygon points="160,380 130,430 190,430"/>
+    <polygon points="250,600 250,360 230,600"/>
+    <polygon points="250,360 220,410 280,410"/>
+    <polygon points="340,600 340,390 320,600"/>
+    <polygon points="340,390 310,440 370,440"/>
+    <polygon points="480,600 480,370 460,600"/>
+    <polygon points="480,370 450,420 510,420"/>
+    <polygon points="560,600 560,350 540,600"/>
+    <polygon points="560,350 530,400 590,400"/>
+    <polygon points="660,600 660,380 640,600"/>
+    <polygon points="660,380 630,430 690,430"/>
+    <polygon points="740,600 740,360 720,600"/>
+    <polygon points="740,360 710,410 770,410"/>
+  </g>
+  <!-- Water -->
+  <rect x="0" y="450" width="800" height="150" fill="#004e89" opacity="0.6"/>
+  <!-- Sun reflection on water -->
+  <rect x="380" y="465" width="40" height="3" fill="#ff6b35" opacity="0.4" rx="1"/>
+  <rect x="370" y="480" width="60" height="2" fill="#f7c59f" opacity="0.3" rx="1"/>
+  <rect x="385" y="495" width="30" height="2" fill="#ff6b35" opacity="0.2" rx="1"/>
+  <rect x="375" y="510" width="50" height="2" fill="#f7c59f" opacity="0.15" rx="1"/>
+  <!-- Birds -->
+  <g stroke="#002a4a" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M300,200 Q310,195 320,200 Q330,195 340,200"/>
+    <path d="M340,180 Q348,176 356,180 Q364,176 372,180"/>
+    <path d="M270,210 Q278,206 286,210 Q294,206 302,210"/>
+  </g>
+</svg>

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/window-manager.css">
   <link rel="stylesheet" href="css/taskbar.css">
   <link rel="stylesheet" href="css/start-menu.css">
+  <link rel="stylesheet" href="css/picture-viewer.css">
 
   <style>
     /* Ensure XP.css styles don't break full-viewport layout */
@@ -47,6 +48,9 @@
     <div id="quick-launch">
       <div class="quick-launch-icon" data-app="launchNotepad" title="Notepad">
         <span style="font-size:18px;">📝</span>
+      </div>
+      <div class="quick-launch-icon" data-app="launchPictureViewer" title="Picture Viewer">
+        <span style="font-size:18px;">🖼️</span>
       </div>
       <div class="quick-launch-icon" data-app="" title="Command Prompt (coming soon)">
         <span style="font-size:18px;">💻</span>
@@ -84,7 +88,7 @@
               <span class="menu-icon">📁</span>
               <span>My Documents</span>
             </div>
-            <div class="start-menu-right-link" onclick="alert('My Pictures folder coming soon!')">
+            <div class="start-menu-right-link" onclick="window.launchPictureViewer()">
               <span class="menu-icon">🖼️</span>
               <span>My Pictures</span>
             </div>
@@ -119,6 +123,7 @@
   <script src="js/start-menu.js"></script>
   <script src="js/taskbar.js"></script>
   <script src="js/desktop-icons.js"></script>
+  <script src="js/picture-viewer.js"></script>
   <script src="js/shell.js"></script>
 </body>
 </html>
