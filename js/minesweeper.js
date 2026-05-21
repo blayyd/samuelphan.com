@@ -8,6 +8,9 @@
  * - Smiley face: resets game (normal), X on loss, sunglasses on win
  * - Mine counter and timer
  * - XP-style beveled cells, classic grey background
+ *
+ * Uses event delegation on the game wrapper so everything survives
+ * innerHTML serialization by the window manager.
  */
 (function () {
   'use strict';
@@ -26,11 +29,17 @@
   var seconds = 0;
   var flagCount = 0;
 
-  var gridEl = null;
-  var timerEl = null;
-  var counterEl = null;
-  var smileyEl = null;
-  var wrapperEl = null;
+  // These are re-bound after each render via querySelector on the live DOM
+  var gameRoot = null;
+
+  function bindDOM(root) {
+    gameRoot = root;
+  }
+
+  function getGridEl()    { return gameRoot ? gameRoot.querySelector('.ms-grid') : null; }
+  function getTimerEl()   { return gameRoot ? gameRoot.querySelector('.ms-timer') : null; }
+  function getCounterEl() { return gameRoot ? gameRoot.querySelector('.ms-counter') : null; }
+  function getSmileyEl()  { return gameRoot ? gameRoot.querySelector('.ms-smiley') : null; }
 
   function init() {
     firstClick = true;
@@ -43,7 +52,6 @@
       timerInterval = null;
     }
 
-    // Build the grid data
     grid = [];
     revealed = [];
     flagged = [];
@@ -65,13 +73,11 @@
       var r = Math.floor(Math.random() * ROWS);
       var c = Math.floor(Math.random() * COLS);
       if (grid[r][c] === -1) continue;
-      // No mine on the first click cell or its neighbours
       if (Math.abs(r - excludeR) <= 1 && Math.abs(c - excludeC) <= 1) continue;
       grid[r][c] = -1;
       placed++;
     }
 
-    // Calculate numbers
     for (var rr = 0; rr < ROWS; rr++) {
       for (var cc = 0; cc < COLS; cc++) {
         if (grid[rr][cc] === -1) continue;
@@ -91,69 +97,58 @@
     }
   }
 
+  // Returns plain HTML string — no event listeners, no DOM refs
   function createGameHTML() {
-    var wrapper = document.createElement('div');
-    wrapper.className = 'ms-game-wrapper';
-
-    // Top panel: mine counter, smiley, timer
-    var topPanel = document.createElement('div');
-    topPanel.className = 'ms-top-panel';
-
-    counterEl = document.createElement('div');
-    counterEl.className = 'ms-counter';
-    counterEl.textContent = pad3(MINES);
-
-    smileyEl = document.createElement('div');
-    smileyEl.className = 'ms-smiley';
-    smileyEl.textContent = '🙂';
-    smileyEl.addEventListener('click', function () {
-      resetGame();
-    });
-
-    timerEl = document.createElement('div');
-    timerEl.className = 'ms-timer';
-    timerEl.textContent = '000';
-
-    topPanel.appendChild(counterEl);
-    var smileyWrap = document.createElement('div');
-    smileyWrap.className = 'ms-smiley-wrap';
-    smileyWrap.appendChild(smileyEl);
-    topPanel.appendChild(smileyWrap);
-    topPanel.appendChild(timerEl);
-
-    wrapper.appendChild(topPanel);
-
-    // Grid
-    gridEl = document.createElement('div');
-    gridEl.className = 'ms-grid';
-    gridEl.style.gridTemplateColumns = 'repeat(' + COLS + ', 26px)';
-
+    var cells = '';
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
-        var cell = document.createElement('div');
-        cell.className = 'ms-cell';
-        cell.dataset.r = r;
-        cell.dataset.c = c;
-
-        // Left click
-        cell.addEventListener('click', (function (row, col) {
-          return function () { handleClick(row, col); };
-        })(r, c));
-
-        // Right click (flag)
-        cell.addEventListener('contextmenu', (function (row, col) {
-          return function (e) {
-            e.preventDefault();
-            handleRightClick(row, col);
-          };
-        })(r, c));
-
-        gridEl.appendChild(cell);
+        cells += '<div class="ms-cell" data-r="' + r + '" data-c="' + c + '"></div>';
       }
     }
 
-    wrapper.appendChild(gridEl);
-    return wrapper;
+    return '' +
+      '<div class="ms-game-wrapper">' +
+        '<div class="ms-top-panel">' +
+          '<div class="ms-counter">' + pad3(MINES) + '</div>' +
+          '<div class="ms-smiley-wrap"><div class="ms-smiley">🙂</div></div>' +
+          '<div class="ms-timer">000</div>' +
+        '</div>' +
+        '<div class="ms-grid" style="grid-template-columns: repeat(' + COLS + ', 26px);">' +
+          cells +
+        '</div>' +
+      '</div>';
+  }
+
+  // Called after the HTML is in the live DOM — wires up event delegation
+  function wireEvents(root) {
+    bindDOM(root);
+
+    // Smiley click → reset
+    var smiley = getSmileyEl();
+    if (smiley) {
+      smiley.addEventListener('click', function () { resetGame(); });
+    }
+
+    // Grid click delegation (left click)
+    var gridEl = getGridEl();
+    if (gridEl) {
+      gridEl.addEventListener('click', function (e) {
+        var cell = e.target.closest('.ms-cell');
+        if (!cell) return;
+        var r = parseInt(cell.dataset.r);
+        var c = parseInt(cell.dataset.c);
+        if (!isNaN(r) && !isNaN(c)) handleClick(r, c);
+      });
+
+      gridEl.addEventListener('contextmenu', function (e) {
+        var cell = e.target.closest('.ms-cell');
+        if (!cell) return;
+        e.preventDefault();
+        var r = parseInt(cell.dataset.r);
+        var c = parseInt(cell.dataset.c);
+        if (!isNaN(r) && !isNaN(c)) handleRightClick(r, c);
+      });
+    }
   }
 
   function handleClick(r, c) {
@@ -164,7 +159,6 @@
     if (firstClick) {
       placeMines(r, c);
       firstClick = false;
-      // Start timer
       seconds = 0;
       timerInterval = setInterval(function () {
         seconds++;
@@ -193,18 +187,17 @@
     revealed[r][c] = true;
 
     if (grid[r][c] === -1) {
-      // Hit a mine
       gameOver = true;
       clearInterval(timerInterval);
       timerInterval = null;
-      smileyEl.textContent = '😵';
+      var smiley = getSmileyEl();
+      if (smiley) smiley.textContent = '😵';
       revealAllMines(r, c);
       return;
     }
 
     renderCell(r, c);
 
-    // If number is 0, flood fill
     if (grid[r][c] === 0) {
       for (var dr = -1; dr <= 1; dr++) {
         for (var dc = -1; dc <= 1; dc++) {
@@ -218,11 +211,13 @@
   }
 
   function revealAllMines(hitR, hitC) {
+    var gridEl = getGridEl();
+    if (!gridEl) return;
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         if (grid[r][c] === -1) {
           revealed[r][c] = true;
-          var cell = getCellElement(r, c);
+          var cell = gridEl.querySelector('[data-r="' + r + '"][data-c="' + c + '"]');
           if (!cell) continue;
           if (r === hitR && c === hitC) {
             cell.classList.add('mine-hit');
@@ -232,8 +227,7 @@
           }
           cell.classList.add('revealed');
         } else if (flagged[r][c] && grid[r][c] !== -1) {
-          // Wrong flags
-          var fc = getCellElement(r, c);
+          var fc = gridEl.querySelector('[data-r="' + r + '"][data-c="' + c + '"]');
           if (fc) {
             fc.textContent = '❌';
             fc.classList.add('revealed');
@@ -256,8 +250,8 @@
       gameWon = true;
       clearInterval(timerInterval);
       timerInterval = null;
-      smileyEl.textContent = '😎';
-      // Auto-flag remaining mines
+      var smiley = getSmileyEl();
+      if (smiley) smiley.textContent = '😎';
       for (var rr = 0; rr < ROWS; rr++) {
         for (var cc = 0; cc < COLS; cc++) {
           if (grid[rr][cc] === -1) {
@@ -272,10 +266,11 @@
   }
 
   function renderCell(r, c) {
-    var cell = getCellElement(r, c);
+    var gridEl = getGridEl();
+    if (!gridEl) return;
+    var cell = gridEl.querySelector('[data-r="' + r + '"][data-c="' + c + '"]');
     if (!cell) return;
 
-    // Reset
     cell.textContent = '';
     cell.className = 'ms-cell';
 
@@ -286,41 +281,36 @@
       } else if (grid[r][c] > 0) {
         cell.innerHTML = '<span class="ms-num-' + grid[r][c] + '">' + grid[r][c] + '</span>';
       }
-      // else 0 — empty
     } else if (flagged[r][c]) {
       cell.classList.add('flagged');
       cell.textContent = '🚩';
     }
   }
 
-  function getCellElement(r, c) {
-    return gridEl ? gridEl.querySelector('[data-r="' + r + '"][data-c="' + c + '"]') : null;
-  }
-
   function displayTimer() {
-    if (timerEl) timerEl.textContent = pad3(Math.min(seconds, 999));
+    var el = getTimerEl();
+    if (el) el.textContent = pad3(Math.min(seconds, 999));
   }
 
   function updateCounter() {
-    if (counterEl) counterEl.textContent = pad3(Math.max(0, MINES - flagCount));
+    var el = getCounterEl();
+    if (el) el.textContent = pad3(Math.max(0, MINES - flagCount));
   }
 
   function resetGame() {
-    // Stop timer
     if (timerInterval) {
       clearInterval(timerInterval);
       timerInterval = null;
     }
 
-    // Reset state
     firstClick = true;
     seconds = 0;
     flagCount = 0;
     gameOver = false;
     gameWon = false;
-    smileyEl.textContent = '🙂';
+    var smiley = getSmileyEl();
+    if (smiley) smiley.textContent = '🙂';
 
-    // Clear grid data
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         grid[r][c] = 0;
@@ -329,7 +319,6 @@
       }
     }
 
-    // Re-render all cells
     for (var rr = 0; rr < ROWS; rr++) {
       for (var cc = 0; cc < COLS; cc++) {
         renderCell(rr, cc);
@@ -347,13 +336,15 @@
     return '' + Math.min(n, 999);
   }
 
-  // Re-launch: destroy old window, create new
   function launchMinesweeper() {
-    var content = document.createElement('div');
-    content.style.height = '100%';
-    content.style.padding = '0';
-    content.style.overflow = 'hidden';
-    content.appendChild(createGameHTML());
+    init();
+
+    // Create a content wrapper element
+    var contentDiv = document.createElement('div');
+    contentDiv.style.height = '100%';
+    contentDiv.style.padding = '0';
+    contentDiv.style.overflow = 'hidden';
+    contentDiv.innerHTML = createGameHTML();
 
     window.XPDesktop.WindowManager.createWindow({
       title: 'Minesweeper',
@@ -365,13 +356,20 @@
         '<circle cx="16" cy="8" r="2" fill="#000"/>' +
         '</svg>'
       ),
-      content: content.outerHTML,
+      content: contentDiv.innerHTML,
       width: 310,
       height: 340,
       x: 120,
       y: 80,
       resizable: false
     });
+
+    // After window manager inserts into DOM, wire up events
+    setTimeout(function () {
+      // Find the game wrapper inside the window manager's DOM
+      var wrapper = document.querySelector('.ms-game-wrapper');
+      if (wrapper) wireEvents(wrapper);
+    }, 50);
   }
 
   // Export
@@ -379,8 +377,6 @@
   window.XPDesktop.Minesweeper = {
     launch: launchMinesweeper
   };
-
-  // Also expose globally for onclick handlers
   window.launchMinesweeper = launchMinesweeper;
 
   console.log('[XP Apps] Minesweeper loaded');
