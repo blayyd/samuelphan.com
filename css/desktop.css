@@ -1,0 +1,172 @@
+/* ===== Desktop Background (Bliss) ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  font-size: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 48px; /* taskbar height */
+  background: linear-gradient(
+    to bottom,
+    #3273c0 0%,
+    #4a90d9 15%,
+    #6fafe6 30%,
+    #87CEEB 45%,
+    #9dd0ed 55%,
+    #6aab48 56%,
+    #5a9e3e 62%,
+    #4a8c2e 70%,
+    #3d7a25 80%,
+    #2e6620 100%
+  );
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Clouds */
+#desktop::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 10%;
+  width: 180px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 60px;
+  filter: blur(8px);
+  z-index: 1;
+}
+
+#desktop::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  right: 20%;
+  width: 240px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 70px;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+/* Sun glow */
+.desktop-sun {
+  position: absolute;
+  top: 5%;
+  right: 15%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,255,200,0.8) 0%, rgba(255,255,200,0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.desktop-sun::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #fff8c0 0%, #ffe680 50%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Extra clouds */
+.desktop-cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 40px;
+  filter: blur(6px);
+  z-index: 1;
+}
+
+/* ===== Desktop Icon Grid ===== */
+#desktop-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  z-index: 2;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  padding: 6px 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.desktop-icon:hover {
+  background: rgba(0, 80, 200, 0.08);
+  border-color: rgba(0, 80, 200, 0.15);
+}
+
+.desktop-icon.selected {
+  background: rgba(0, 80, 200, 0.12);
+  border-color: rgba(0, 80, 200, 0.35);
+}
+
+.desktop-icon img,
+.desktop-icon .icon-placeholder {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  pointer-events: none;
+}
+
+.desktop-icon .icon-label {
+  color: white;
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.6),
+    -1px -1px 0 rgba(0,0,0,0.6),
+    1px -1px 0 rgba(0,0,0,0.6),
+    -1px 1px 0 rgba(0,0,0,0.6);
+  word-wrap: break-word;
+  max-width: 72px;
+  pointer-events: none;
+}
+
+/* ===== Window Container ===== */
+#window-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 48px; /* above taskbar */
+  z-index: 10;
+  pointer-events: none;
+}
+
+#window-container > .window {
+  pointer-events: auto;
+}

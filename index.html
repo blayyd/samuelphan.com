@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>samuelphan.com — Windows XP</title>
+
+  <!-- XP.css Framework -->
+  <link rel="stylesheet" href="https://unpkg.com/xp.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/window-manager.css">
+  <link rel="stylesheet" href="css/taskbar.css">
+  <link rel="stylesheet" href="css/start-menu.css">
+
+  <style>
+    /* Ensure XP.css styles don't break full-viewport layout */
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <!-- ===== Desktop ===== -->
+  <div id="desktop">
+    <!-- Sun glow -->
+    <div class="desktop-sun"></div>
+
+    <!-- Extra clouds -->
+    <div class="desktop-cloud" style="top:6%;left:30%;width:140px;height:40px;"></div>
+    <div class="desktop-cloud" style="top:18%;left:55%;width:100px;height:30px;"></div>
+
+    <!-- Desktop Icons -->
+    <div id="desktop-icons"></div>
+
+    <!-- Window Container (all windows render here) -->
+    <div id="window-container"></div>
+  </div>
+
+  <!-- ===== Taskbar ===== -->
+  <div id="taskbar">
+    <!-- Start Button -->
+    <button id="start-button">
+      <span class="start-logo">🪟</span>
+      <span class="start-label">start</span>
+    </button>
+
+    <!-- Quick Launch -->
+    <div id="quick-launch">
+      <div class="quick-launch-icon" data-app="launchNotepad" title="Notepad">
+        <span style="font-size:18px;">📝</span>
+      </div>
+      <div class="quick-launch-icon" data-app="" title="Command Prompt (coming soon)">
+        <span style="font-size:18px;">💻</span>
+      </div>
+      <div class="taskbar-separator"></div>
+    </div>
+
+    <!-- Window Tabs -->
+    <div id="window-tabs"></div>
+
+    <!-- System Tray -->
+    <div id="system-tray">
+      <div class="tray-icon" title="Network">🌐</div>
+      <div class="tray-icon" title="Volume">🔊</div>
+      <div class="taskbar-separator"></div>
+      <div id="clock"></div>
+    </div>
+  </div>
+
+  <!-- ===== Start Menu Overlay ===== -->
+  <div id="start-menu-overlay">
+    <div id="start-menu">
+      <div class="start-menu-inner">
+        <!-- Left Column: Programs -->
+        <div class="start-menu-left"></div>
+
+        <!-- Right Column: User -->
+        <div class="start-menu-right">
+          <div class="start-menu-user-area">
+            <div class="start-menu-user-icon">👤</div>
+            <div class="start-menu-user-name">Samuel Phan</div>
+          </div>
+          <div class="start-menu-right-links">
+            <div class="start-menu-right-link" onclick="alert('My Documents folder coming soon!')">
+              <span class="menu-icon">📁</span>
+              <span>My Documents</span>
+            </div>
+            <div class="start-menu-right-link" onclick="alert('My Pictures folder coming soon!')">
+              <span class="menu-icon">🖼️</span>
+              <span>My Pictures</span>
+            </div>
+            <div class="start-menu-right-link" onclick="alert('My Music folder coming soon!')">
+              <span class="menu-icon">🎵</span>
+              <span>My Music</span>
+            </div>
+            <div class="start-menu-right-link" onclick="alert('Favorites coming soon!')">
+              <span class="menu-icon">⭐</span>
+              <span>Favorites</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom actions -->
+      <div class="start-menu-bottom">
+        <div class="start-menu-bottom-btn" onclick="if(window.XPDesktop&&window.XPDesktop.StartMenu)window.XPDesktop.StartMenu.close();alert('Log Off coming soon!');">
+          <span class="menu-icon">🚪</span>
+          <span>Log Off</span>
+        </div>
+        <div class="start-menu-bottom-btn" onclick="if(window.XPDesktop&&window.XPDesktop.StartMenu)window.XPDesktop.StartMenu.close();alert('Turn Off Computer coming soon!');">
+          <span class="menu-icon">🔌</span>
+          <span>Turn Off Computer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Scripts ===== -->
+  <script src="js/window-manager.js"></script>
+  <script src="js/start-menu.js"></script>
+  <script src="js/taskbar.js"></script>
+  <script src="js/desktop-icons.js"></script>
+  <script src="js/shell.js"></script>
+</body>
+</html>
