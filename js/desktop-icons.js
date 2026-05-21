@@ -97,6 +97,12 @@
       return;
     }
 
+    // "My Photos" opens the Picture Viewer
+    if (item.id === 'my-photos' && window.launchPictureViewer) {
+      window.launchPictureViewer();
+      return;
+    }
+
     // Check if this is a bonus app that has its own launch function
     if (item.id === 'minesweeper' && window.launchMinesweeper) {
       window.launchMinesweeper();

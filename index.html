@@ -20,8 +20,29 @@
     /* Ensure XP.css styles don't break full-viewport layout */
     body { margin: 0; padding: 0; }
   </style>
+
+  <!-- Mobile fallback -->
+  <style>
+    #mobile-fallback {
+      display: none;
+      position: fixed; inset: 0; z-index: 99999;
+      background: #3a6ea5;
+      color: white; font-family: 'Tahoma', sans-serif;
+      text-align: center; padding-top: 20vh;
+    }
+    #mobile-fallback h1 { font-size: 24px; margin-bottom: 12px; }
+    #mobile-fallback p { font-size: 14px; opacity: 0.85; max-width: 280px; margin: 0 auto; }
+    @media (max-width: 800px) {
+      #mobile-fallback { display: block; }
+      #desktop, #taskbar, #start-menu-overlay { display: none !important; }
+    }
+  </style>
 </head>
 <body>
+  <div id="mobile-fallback">
+    <h1>🖥️ Best viewed on desktop</h1>
+    <p>This site is a Windows XP desktop simulator. For the full experience, visit on a larger screen.</p>
+  </div>
   <!-- ===== Desktop ===== -->
   <div id="desktop">
     <!-- Sun glow -->
