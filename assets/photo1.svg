@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a90d9"/>
+      <stop offset="100%" stop-color="#87CEEB"/>
+    </linearGradient>
+    <linearGradient id="sea1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2e86ab"/>
+      <stop offset="100%" stop-color="#1a5276"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky1)"/>
+  <!-- Sun -->
+  <circle cx="600" cy="120" r="50" fill="#f9d71c" opacity="0.9"/>
+  <circle cx="600" cy="120" r="60" fill="#f9d71c" opacity="0.2"/>
+  <!-- Clouds -->
+  <ellipse cx="200" cy="100" rx="80" ry="30" fill="white" opacity="0.7"/>
+  <ellipse cx="250" cy="90" rx="60" ry="25" fill="white" opacity="0.8"/>
+  <ellipse cx="450" cy="140" rx="70" ry="20" fill="white" opacity="0.5"/>
+  <!-- Sea -->
+  <rect x="0" y="350" width="800" height="250" fill="url(#sea1)"/>
+  <!-- Mountains background -->
+  <polygon points="0,350 100,200 200,350" fill="#5d8a3c" opacity="0.6"/>
+  <polygon points="150,350 300,180 450,350" fill="#4a7a2e" opacity="0.7"/>
+  <polygon points="350,350 500,220 650,350" fill="#3d6a25" opacity="0.5"/>
+  <!-- Beach -->
+  <ellipse cx="400" cy="380" rx="500" ry="60" fill="#e8d5a3"/>
+  <!-- Reflection on water -->
+  <rect x="560" y="370" width="80" height="4" fill="#f9d71c" opacity="0.3" rx="2"/>
+  <rect x="570" y="390" width="60" height="3" fill="#f9d71c" opacity="0.2" rx="2"/>
+</svg>

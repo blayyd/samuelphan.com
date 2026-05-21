@@ -1,0 +1,29 @@
+{
+  "photos": [
+    {
+      "filename": "photo1.svg",
+      "title": "Coastal Sunrise",
+      "description": "A beautiful sunrise over the coast with mountains in the distance."
+    },
+    {
+      "filename": "photo2.svg",
+      "title": "Starry Night",
+      "description": "A serene night sky filled with stars above mountain silhouettes."
+    },
+    {
+      "filename": "photo3.svg",
+      "title": "Forest Path",
+      "description": "A peaceful woodland path winding through tall green trees."
+    },
+    {
+      "filename": "photo4.svg",
+      "title": "City Skyline",
+      "description": "The city at night with illuminated skyscrapers reaching for the stars."
+    },
+    {
+      "filename": "photo5.svg",
+      "title": "Sunset Silhouette",
+      "description": "A vibrant sunset with silhouetted trees reflected in calm water."
+    }
+  ]
+}

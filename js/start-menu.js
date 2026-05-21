@@ -26,9 +26,9 @@
       text: 'My Pictures',
       icon: '🖼️',
       submenu: [
-        { text: 'Screenshots', icon: '📷' },
-        { text: 'Wallpapers', icon: '🌄' },
-        { text: 'Memes', icon: '😂' }
+        { text: 'Screenshots', icon: '📷', action: null },
+        { text: 'Picture Viewer', icon: '🌄', action: 'launchPictureViewer' },
+        { text: 'Memes', icon: '😂', action: null }
       ]
     },
     {
@@ -112,7 +112,11 @@
           subMenuItem.addEventListener('click', function (e) {
             e.stopPropagation();
             closeMenu();
-            openItemWindow(item.text + ' › ' + subItem.text, subItem);
+            if (subItem.action && window[subItem.action]) {
+              window[subItem.action]();
+            } else {
+              openItemWindow(item.text + ' › ' + subItem.text, subItem);
+            }
           });
 
           subEl.appendChild(subMenuItem);
