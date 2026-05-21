@@ -78,7 +78,7 @@
 
   function buildWrapperHTML() {
     var html = '' +
-      '<div class="cmd-wrapper">' +
+      '<div class="cmd-wrapper" tabindex="0" style="outline:none">' +
         '<div class="cmd-output">' +
           '<div class="cmd-line"><span class="cmd-gray">Microsoft(R) Windows XP</span></div>' +
           '<div class="cmd-line"><span class="cmd-gray">(C) Copyright 1985-2001 Microsoft Corp.</span></div>' +
