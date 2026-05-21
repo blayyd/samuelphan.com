@@ -1,14 +1,42 @@
 {
-  "the-euler-identity.txt": {
-    "title": "The Euler Identity",
-    "content": "Euler's Identity: e^(iπ) + 1 = 0\n\nOften called the most beautiful equation in mathematics,\nEuler's identity connects five fundamental constants:\n\n  e  — Euler's number (2.71828...), base of natural logarithms\n  i  — The imaginary unit, where i² = -1\n  π  — Pi (3.14159...), the ratio of a circle's circumference\n       to its diameter\n  1  — The multiplicative identity\n  0  — The additive identity\n\nThe identity is a special case of Euler's formula:\n\n  e^(ix) = cos(x) + i·sin(x)\n\nWhen x = π, we get:\n  e^(iπ) = cos(π) + i·sin(π)\n  e^(iπ) = -1 + 0\n  e^(iπ) + 1 = 0\n\nThis elegant result is often the first glimpse into the\nprofound unity of mathematics for many students."
+  "command-line-tricks.txt": {
+    "title": "Command Line Tricks I Use Every Day",
+    "content": "Command Line Tricks I Use Every Day\n====================================\n\nThese are the shell shortcuts and commands that save me\nthe most time every single day.\n\nNavigation\n----------\n\n```bash\n# Jump to previous directory\ncd -\n\n# Go to home\ncd\n\n# Create + enter a directory in one go\nmkdir -p deep/nested/path && cd $_\n```\n\nFile Operations\n---------------\n\n```bash\n# Find all Python files modified in the last 7 days\nfind . -name \"*.py\" -mtime -7\n\n# Replace a string across many files (dry-run first!)\ngrep -rl \"old_function\" . | xargs sed -i 's/old_function/new_function/g'\n\n# Count lines of code in a directory\nfind . -name \"*.py\" | xargs wc -l | tail -1\n```\n\nGit Shortcuts\n-------------\n\n```bash\n# Undo the last commit (keep changes staged)\ngit reset --soft HEAD~1\n\n# Amend the last commit message\ngit commit --amend -m \"better message\"\n\n# See what changed since you branched\ngit diff main...HEAD\n\n# Interactive rebase on last 3 commits\ngit rebase -i HEAD~3\n```\n\nProcess Management\n-------------------\n\n```bash\n# Kill a process by name\npkill -f \"python server.py\"\n\n# Find what's listening on a port\nlsof -i :3000\n\n# Run a command immune to hangups\nnohup long_running_task &\n```\n\nShell Productivity\n-------------------\n\n- **Ctrl+R**: reverse search through command history\n- **Ctrl+A**: jump to beginning of line\n- **Ctrl+E**: jump to end of line\n- **Ctrl+U**: clear from cursor to start of line\n- **Ctrl+K**: clear from cursor to end of line\n- **!!**: repeat the last command (great with sudo: `sudo !!`)\n\nThe best trick is the one that becomes muscle memory.\nPick one, use it for a week, then add another.",
+    "tags": [
+      "productivity",
+      "terminal",
+      "tips"
+    ],
+    "date": "2026-05-08"
   },
   "photography-tips.txt": {
     "title": "Photography Tips for Beginners",
-    "content": "Quick Photography Tips\n=====================\n\n1. The Rule of Thirds\n   Imagine a 3x3 grid over your frame. Place key subjects\n   along the lines or at their intersections for a more\n   balanced composition.\n\n2. Natural Light is Your Friend\n   The golden hours (just after sunrise and before sunset)\n   provide warm, diffused light that flatters most subjects.\n   Avoid harsh midday sun when shadows are too strong.\n\n3. Get Closer\n   Fill the frame with your subject. Most beginning\n   photographers leave too much empty space around\n   their subject.\n\n4. Keep the Horizon Level\n   A tilted horizon is distracting. Use your camera's\n   grid overlay to keep it straight.\n\n5. Experiment with Angles\n   Don't just shoot from eye level. Try crouching down,\n   climbing up, or tilting the camera for more dynamic\n   perspectives.\n\n6. Focus on the Eyes\n   For portraits, the eyes should always be in sharp\n   focus. They are the most important element.\n\nEquipment:\n- Any camera is better than no camera\n- A 50mm f/1.8 lens is the best value in photography\n- A tripod unlocks long exposures and sharper images\n\nRemember: the best camera is the one you have with you."
+    "content": "Quick Photography Tips\n=====================\n\n1. The Rule of Thirds\n   Imagine a 3x3 grid over your frame. Place key subjects\n   along the lines or at their intersections for a more\n   balanced composition.\n\n2. Natural Light is Your Friend\n   The golden hours (just after sunrise and before sunset)\n   provide warm, diffused light that flatters most subjects.\n   Avoid harsh midday sun when shadows are too strong.\n\n3. Get Closer\n   Fill the frame with your subject. Most beginning\n   photographers leave too much empty space around\n   their subject.\n\n4. Keep the Horizon Level\n   A tilted horizon is distracting. Use your camera's\n   grid overlay to keep it straight.\n\n5. Experiment with Angles\n   Don't just shoot from eye level. Try crouching down,\n   climbing up, or tilting the camera for more dynamic\n   perspectives.\n\n6. Focus on the Eyes\n   For portraits, the eyes should always be in sharp\n   focus. They are the most important element.\n\nEquipment:\n- Any camera is better than no camera\n- A 50mm f/1.8 lens is the best value in photography\n- A tripod unlocks long exposures and sharper images\n\nRemember: the best camera is the one you have with you.",
+    "tags": [
+      "photography",
+      "tutorial",
+      "creativity"
+    ],
+    "date": "2026-05-12"
   },
-  "about-samuelphan.txt": {
-    "title": "About samuelphan.com",
-    "content": "Welcome to samuelphan.com!\n\nThis site is a nostalgic recreation of the Windows XP\ndesktop experience, built with pure HTML, CSS, and\nvanilla JavaScript.\n\nNo frameworks. No build tools. Just the web.\n\nInspired by:\n- Microsoft Windows XP (2001-2014)\n- The blissful simplicity of early 2000s web design\n- XP.css by botoxparty for the Luna theme components\n\nFeatures:\n- Fully functional window manager (drag, resize, min/max/close)\n- Start menu with flyout submenus\n- Taskbar with real-time clock\n- Classic Bliss desktop wallpaper recreation\n- Notepad application with real content\n\nThis project is a playground for web development and\na love letter to an operating system that defined a\ngeneration.\n\nBuilt by Samuel Phan\n(c) 2026 - All rights reserved"
+  "the-euler-identity.txt": {
+    "title": "The Euler Identity",
+    "content": "Euler's Identity: e^(iπ) + 1 = 0\n\nOften called the most beautiful equation in mathematics,\nEuler's identity connects five fundamental constants:\n\n  e  — Euler's number (2.71828...), base of natural logarithms\n  i  — The imaginary unit, where i² = -1\n  π  — Pi (3.14159...), the ratio of a circle's circumference\n       to its diameter\n  1  — The multiplicative identity\n  0  — The additive identity\n\nThe identity is a special case of Euler's formula:\n\n  e^(ix) = cos(x) + i·sin(x)\n\nWhen x = π, we get:\n  e^(iπ) = cos(π) + i·sin(π)\n  e^(iπ) = -1 + 0\n  e^(iπ) + 1 = 0\n\nThis elegant result is often the first glimpse into the\nprofound unity of mathematics for many students.",
+    "tags": [
+      "mathematics",
+      "beauty",
+      "fundamentals"
+    ],
+    "date": "2026-05-15"
+  },
+  "why-xp-website.txt": {
+    "title": "Why I Built a Windows XP Website in 2026",
+    "content": "Why I Built a Windows XP Website in 2026\n=========================================\n\nThere's something about the early 2000s web that we lost.\n\nThe internet of 2001 was slower, clunkier, and far less capable —\nbut it was also more personal. People built pages by hand. They\nexperimented with garish color schemes, Comic Sans, and moving\nGIFs because that's all there was. Every site was someone's\nliving room on the web.\n\nFast forward to 2026. The modern web is polished to a mirror\nshine — React components, design systems, CDN edge caching.\nBut somehow, every site looks the same. The personality has\nbeen sanded off.\n\nThis project — samuelphan.com — is my attempt to bottle some\nof that old energy and serve it through a browser window.\n\nA love letter to Windows XP\n----------------------------\n\nI chose Windows XP as the theme because it was the first OS\nwhere I really understood what a computer could do. The Bliss\nwallpaper. The startup sound. The Fisher-Price aesthetic that\nsomehow didn't feel childish — it felt welcoming.\n\nThe Luna theme, with its rounded corners and gradient title\nbars, was a masterpiece of early 2000s design. It said:\n\"Computers are for everyone.\"\n\nWhat I'm building\n------------------\n\nThis site is a working XP desktop in the browser:\n- A window manager (drag, resize, minimize, maximize)\n- A taskbar with a real-time clock\n- A Start menu with flyout submenus\n- Classic XP apps: Notepad, Picture Viewer, Minesweeper,\n  Command Prompt, Internet Explorer, and Clippy\n\nNo frameworks. No React. No Next.js. Just HTML, CSS, and\nvanilla JavaScript — the way Tim Berners-Lee intended.\n\nHow to use this content pipeline\n---------------------------------\n\nI use Obsidian for my personal notes. The content pipeline\nlets me drop markdown files from my vault into content/notes/,\nrun `make build` or `python3 build.py`, and they appear in\nthe Notepad app on the site.\n\nSame for photos: drop an image into content/photos/, run the\nbuild, and it shows up in Picture Viewer.\n\nThis keeps my content workflow simple: write in Obsidian,\nsync to the site with one command. No CMS, no database,\nno build pipeline that requires a CS degree to operate.\n\nJust text files and a script.",
+    "tags": [
+      "web",
+      "nostalgia",
+      "project"
+    ],
+    "date": "2026-05-10"
   }
 }

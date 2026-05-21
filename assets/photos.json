@@ -1,29 +1,29 @@
 {
   "photos": [
     {
-      "filename": "photo1.svg",
-      "title": "Coastal Sunrise",
-      "description": "A beautiful sunrise over the coast with mountains in the distance."
-    },
-    {
-      "filename": "photo2.svg",
-      "title": "Starry Night",
-      "description": "A serene night sky filled with stars above mountain silhouettes."
-    },
-    {
-      "filename": "photo3.svg",
-      "title": "Forest Path",
-      "description": "A peaceful woodland path winding through tall green trees."
-    },
-    {
-      "filename": "photo4.svg",
+      "filename": "city-skyline.svg",
       "title": "City Skyline",
-      "description": "The city at night with illuminated skyscrapers reaching for the stars."
+      "description": ""
     },
     {
-      "filename": "photo5.svg",
-      "title": "Sunset Silhouette",
-      "description": "A vibrant sunset with silhouetted trees reflected in calm water."
+      "filename": "forest-night.svg",
+      "title": "Forest Night",
+      "description": ""
+    },
+    {
+      "filename": "northern-lights.svg",
+      "title": "Northern Lights",
+      "description": ""
+    },
+    {
+      "filename": "sunset-mountains.svg",
+      "title": "Sunset Mountains",
+      "description": "A breathtaking view from the summit of Mount Rainier as the sun dips below the horizon, painting the sky in shades of gold, amber, and deep crimson. The silhouettes of distant peaks stretch across the frame like a watercolor painting."
+    },
+    {
+      "filename": "tropical-beach.svg",
+      "title": "Tropical Beach",
+      "description": ""
     }
   ]
 }

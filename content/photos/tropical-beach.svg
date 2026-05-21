@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="70%" stop-color="#B0E0E6"/>
+      <stop offset="100%" stop-color="#E0F7FA"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#sky)"/>
+  <!-- sun -->
+  <circle cx="650" cy="80" r="40" fill="#FFD700" opacity="0.9"/>
+  <circle cx="650" cy="80" r="55" fill="#FFD700" opacity="0.15"/>
+  <!-- clouds -->
+  <g opacity="0.85">
+    <ellipse cx="200" cy="100" rx="60" ry="22" fill="white"/>
+    <ellipse cx="240" cy="85" rx="45" ry="20" fill="white"/>
+    <ellipse cx="170" cy="90" rx="35" ry="18" fill="white"/>
+  </g>
+  <g opacity="0.7">
+    <ellipse cx="450" cy="130" rx="50" ry="18" fill="white"/>
+    <ellipse cx="490" cy="118" rx="40" ry="16" fill="white"/>
+    <ellipse cx="420" cy="120" rx="30" ry="14" fill="white"/>
+  </g>
+  <!-- ocean -->
+  <rect x="0" y="280" width="800" height="170" fill="#006994"/>
+  <rect x="0" y="285" width="800" height="165" fill="#007ba7"/>
+  <!-- waves -->
+  <path d="M0,290 Q50,280 100,290 Q150,300 200,290 Q250,280 300,290 Q350,300 400,290 Q450,280 500,290 Q550,300 600,290 Q650,280 700,290 Q750,300 800,290" fill="none" stroke="#4db8d1" stroke-width="2" opacity="0.5"/>
+  <path d="M0,310 Q60,300 120,310 Q180,320 240,310 Q300,300 360,310 Q420,320 480,310 Q540,300 600,310 Q660,320 720,310 Q780,300 800,310" fill="none" stroke="#5dc8e0" stroke-width="2" opacity="0.4"/>
+  <path d="M0,340 Q70,330 140,340 Q210,350 280,340 Q350,330 420,340 Q490,350 560,340 Q630,330 700,340 Q770,350 800,340" fill="none" stroke="#6dd8ea" stroke-width="1.5" opacity="0.3"/>
+  <!-- shore -->
+  <ellipse cx="400" cy="285" rx="500" ry="30" fill="#F4A460"/>
+  <ellipse cx="400" cy="280" rx="480" ry="25" fill="#DEB887"/>
+  <!-- palm tree -->
+  <rect x="115" y="120" width="12" height="170" rx="4" fill="#8B4513"/>
+  <path d="M121,130 Q80,100 50,130" fill="none" stroke="#228B22" stroke-width="6" stroke-linecap="round"/>
+  <path d="M121,130 Q180,90 200,125" fill="none" stroke="#228B22" stroke-width="6" stroke-linecap="round"/>
+  <path d="M121,135 Q90,170 60,200" fill="none" stroke="#2E8B57" stroke-width="5" stroke-linecap="round"/>
+  <path d="M121,135 Q160,170 190,195" fill="none" stroke="#2E8B57" stroke-width="5" stroke-linecap="round"/>
+  <path d="M121,130 Q125,75 120,65" fill="none" stroke="#228B22" stroke-width="5" stroke-linecap="round"/>
+  <!-- boat -->
+  <path d="M500,275 L550,275 L540,295 L510,295 Z" fill="#8B4513"/>
+  <path d="M525,275 L525,245" stroke="#8B4513" stroke-width="3"/>
+  <polygon points="525,245 525,265 560,260" fill="white" opacity="0.9"/>
+</svg>

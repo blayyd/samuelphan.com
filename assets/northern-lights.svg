@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="30%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1b2838"/>
+    </linearGradient>
+    <filter id="bloom">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#sky)"/>
+  <!-- aurora -->
+  <path d="M0,100 Q100,20 200,80 Q300,140 400,60 Q500,-20 600,70 Q700,160 800,90 L800,200 Q700,120 600,160 Q500,200 400,140 Q300,80 200,130 Q100,180 0,150 Z" fill="#00ff88" opacity="0.15"/>
+  <path d="M0,80 Q150,40 250,90 Q400,150 550,50 Q650,-20 800,70 L800,180 Q650,100 550,150 Q400,220 250,160 Q150,100 0,140 Z" fill="#00ccff" opacity="0.1"/>
+  <!-- stars -->
+  <circle cx="80" cy="40" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="200" cy="25" r="2" fill="white" opacity="0.95"/>
+  <circle cx="350" cy="35" r="1" fill="white" opacity="0.7"/>
+  <circle cx="500" cy="15" r="1.5" fill="white" opacity="0.85"/>
+  <circle cx="620" cy="30" r="1" fill="white" opacity="0.6"/>
+  <circle cx="740" cy="20" r="2" fill="white" opacity="0.9"/>
+  <circle cx="130" cy="65" r="1" fill="white" opacity="0.5"/>
+  <circle cx="450" cy="45" r="1" fill="white" opacity="0.7"/>
+  <circle cx="680" cy="55" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="300" cy="60" r="1" fill="white" opacity="0.4"/>
+  <circle cx="570" cy="60" r="1" fill="white" opacity="0.6"/>
+  <!-- mountains -->
+  <polygon points="0,350 80,200 160,350" fill="#1a1a2e"/>
+  <polygon points="60,350 180,150 300,350" fill="#1c1c32"/>
+  <polygon points="200,350 350,120 500,350" fill="#1e1e36"/>
+  <polygon points="380,350 550,170 720,350" fill="#1c1c32"/>
+  <polygon points="600,350 700,210 800,350" fill="#1a1a2e"/>
+  <!-- snow caps -->
+  <polygon points="350,120 330,170 350,190 370,170" fill="white" opacity="0.3"/>
+  <polygon points="180,150 165,190 180,210 195,190" fill="white" opacity="0.2"/>
+  <polygon points="550,170 530,215 550,235 570,215" fill="white" opacity="0.25"/>
+  <!-- ground -->
+  <rect x="0" y="350" width="800" height="100" fill="#0d1117"/>
+  <!-- lake reflection -->
+  <ellipse cx="400" cy="420" rx="200" ry="25" fill="#0a0f15"/>
+  <ellipse cx="350" cy="430" rx="6" ry="3" fill="#00ccff" opacity="0.15"/>
+  <ellipse cx="420" cy="425" rx="4" ry="2" fill="#00ff88" opacity="0.1"/>
+</svg>

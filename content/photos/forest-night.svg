@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#614385"/>
+      <stop offset="50%" stop-color="#516395"/>
+      <stop offset="100%" stop-color="#2b5876"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.4">
+      <stop offset="0%" stop-color="#ffe259" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#sky)"/>
+  <rect x="0" y="150" width="800" height="300" fill="url(#glow)"/>
+  <!-- moon -->
+  <circle cx="620" cy="80" r="35" fill="#f5f5dc"/>
+  <circle cx="632" cy="72" r="28" fill="url(#sky)" opacity="0.7"/>
+  <!-- fog layers -->
+  <ellipse cx="200" cy="380" rx="180" ry="25" fill="white" opacity="0.15"/>
+  <ellipse cx="500" cy="390" rx="220" ry="20" fill="white" opacity="0.12"/>
+  <ellipse cx="350" cy="400" rx="300" ry="18" fill="white" opacity="0.1"/>
+  <ellipse cx="600" cy="385" rx="200" ry="22" fill="white" opacity="0.08"/>
+  <!-- trees -->
+  <polygon points="60,400 80,320 100,400" fill="#1a3520"/>
+  <polygon points="70,400 90,300 110,400" fill="#1a3a22"/>
+  <polygon points="80,400 100,290 120,400" fill="#1d3d24"/>
+  <polygon points="120,400 140,330 160,400" fill="#1a3520"/>
+  <polygon points="130,400 150,305 170,400" fill="#1a3a22"/>
+  <polygon points="140,400 160,295 180,400" fill="#1d3d24"/>
+  <polygon points="180,400 200,340 220,400" fill="#1a3520"/>
+  <polygon points="195,400 215,310 235,400" fill="#1a3a22"/>
+  <polygon points="220,400 240,335 260,400" fill="#1a3520"/>
+  <polygon points="235,400 255,305 275,400" fill="#1a3a22"/>
+  <polygon points="250,400 270,320 290,400" fill="#1d3d24"/>
+  <polygon points="300,400 320,340 340,400" fill="#1a3520"/>
+  <polygon points="315,400 335,310 355,400" fill="#1a3a22"/>
+  <polygon points="330,400 350,325 370,400" fill="#1a3520"/>
+  <polygon points="360,400 380,335 400,400" fill="#1a3a22"/>
+  <polygon points="375,400 395,315 415,400" fill="#1d3d24"/>
+  <polygon points="390,400 410,340 430,400" fill="#1a3520"/>
+  <polygon points="420,400 440,330 460,400" fill="#1a3520"/>
+  <polygon points="435,400 455,310 475,400" fill="#1a3a22"/>
+  <polygon points="450,400 470,325 490,400" fill="#1d3d24"/>
+  <polygon points="470,400 490,340 510,400" fill="#1a3520"/>
+  <polygon points="500,400 520,330 540,400" fill="#1a3a22"/>
+  <polygon points="515,400 535,315 555,400" fill="#1a3520"/>
+  <polygon points="530,400 550,340 570,400" fill="#1d3d24"/>
+  <polygon points="560,400 580,335 600,400" fill="#1a3520"/>
+  <polygon points="575,400 595,310 615,400" fill="#1a3a22"/>
+  <polygon points="590,400 610,325 630,400" fill="#1a3520"/>
+  <polygon points="620,400 640,340 660,400" fill="#1d3d24"/>
+  <polygon points="635,400 655,315 675,400" fill="#1a3a22"/>
+  <polygon points="650,400 670,330 690,400" fill="#1a3520"/>
+  <polygon points="680,400 700,325 720,400" fill="#1a3520"/>
+  <polygon points="695,400 715,310 735,400" fill="#1a3a22"/>
+  <polygon points="710,400 730,340 750,400" fill="#1d3d24"/>
+  <polygon points="740,400 760,320 780,400" fill="#1a3520"/>
+  <polygon points="755,400 775,310 800,400" fill="#1a3a22"/>
+  <!-- ground -->
+  <rect x="0" y="400" width="800" height="50" fill="#0d1a0d"/>
+  <!-- path -->
+  <path d="M380,450 L390,410 L415,390 L430,370 L440,350 L460,335 L490,315" fill="none" stroke="#4a6741" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
+  <!-- fireflies -->
+  <circle cx="280" cy="370" r="2" fill="#a0ff40" opacity="0.7"/>
+  <circle cx="450" cy="280" r="1.5" fill="#a0ff40" opacity="0.5"/>
+  <circle cx="550" cy="350" r="2" fill="#a0ff40" opacity="0.6"/>
+  <circle cx="160" cy="320" r="1.5" fill="#a0ff40" opacity="0.4"/>
+  <circle cx="650" cy="290" r="2" fill="#a0ff40" opacity="0.5"/>
+</svg>
