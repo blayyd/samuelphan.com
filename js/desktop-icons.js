@@ -87,6 +87,14 @@
   function openIconWindow(item) {
     deselectAll();
 
+    // "My Notes" opens the proper Notepad application
+    if (item.id === 'my-notes') {
+      if (window.XPDesktop && window.XPDesktop.Notepad) {
+        window.XPDesktop.Notepad.open();
+      }
+      return;
+    }
+
     var content = getDefaultContent(item.id);
     var title = getDefaultTitle(item.id);
     var iconDataUri = 'data:image/svg+xml,' + encodeURIComponent(

@@ -27,22 +27,13 @@
   }
 
   // --- Helper to launch default windows ---
-  window.launchNotepad = function () {
-    window.XPDesktop.WindowManager.createWindow({
-      title: 'Untitled - Notepad',
-      icon: 'data:image/svg+xml,' + encodeURIComponent(
-        '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">' +
-        '<rect width="32" height="32" rx="4" fill="#2196F3"/>' +
-        '<text x="16" y="24" font-size="20" text-anchor="middle" fill="white">📝</text></svg>'
-      ),
-      content: '<textarea style="width:100%;height:100%;border:none;outline:none;resize:none;' +
-        'font-family:\'Courier New\',monospace;font-size:13px;padding:8px;box-sizing:border-box;' +
-        'background:white;" placeholder="Type here..."></textarea>',
-      width: 600,
-      height: 400,
-      x: 150,
-      y: 100
-    });
+  window.launchNotepad = function (filename) {
+    if (window.XPDesktop && window.XPDesktop.Notepad) {
+      window.XPDesktop.Notepad.open(filename);
+    } else {
+      // Fallback if notepad hasn't loaded yet
+      console.warn('[Shell] Notepad API not ready yet');
+    }
   };
 
   window.launchAboutXP = function () {

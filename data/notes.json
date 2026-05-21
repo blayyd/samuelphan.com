@@ -1,0 +1,14 @@
+{
+  "the-euler-identity.txt": {
+    "title": "The Euler Identity",
+    "content": "Euler's Identity: e^(iπ) + 1 = 0\n\nOften called the most beautiful equation in mathematics,\nEuler's identity connects five fundamental constants:\n\n  e  — Euler's number (2.71828...), base of natural logarithms\n  i  — The imaginary unit, where i² = -1\n  π  — Pi (3.14159...), the ratio of a circle's circumference\n       to its diameter\n  1  — The multiplicative identity\n  0  — The additive identity\n\nThe identity is a special case of Euler's formula:\n\n  e^(ix) = cos(x) + i·sin(x)\n\nWhen x = π, we get:\n  e^(iπ) = cos(π) + i·sin(π)\n  e^(iπ) = -1 + 0\n  e^(iπ) + 1 = 0\n\nThis elegant result is often the first glimpse into the\nprofound unity of mathematics for many students."
+  },
+  "photography-tips.txt": {
+    "title": "Photography Tips for Beginners",
+    "content": "Quick Photography Tips\n=====================\n\n1. The Rule of Thirds\n   Imagine a 3x3 grid over your frame. Place key subjects\n   along the lines or at their intersections for a more\n   balanced composition.\n\n2. Natural Light is Your Friend\n   The golden hours (just after sunrise and before sunset)\n   provide warm, diffused light that flatters most subjects.\n   Avoid harsh midday sun when shadows are too strong.\n\n3. Get Closer\n   Fill the frame with your subject. Most beginning\n   photographers leave too much empty space around\n   their subject.\n\n4. Keep the Horizon Level\n   A tilted horizon is distracting. Use your camera's\n   grid overlay to keep it straight.\n\n5. Experiment with Angles\n   Don't just shoot from eye level. Try crouching down,\n   climbing up, or tilting the camera for more dynamic\n   perspectives.\n\n6. Focus on the Eyes\n   For portraits, the eyes should always be in sharp\n   focus. They are the most important element.\n\nEquipment:\n- Any camera is better than no camera\n- A 50mm f/1.8 lens is the best value in photography\n- A tripod unlocks long exposures and sharper images\n\nRemember: the best camera is the one you have with you."
+  },
+  "about-samuelphan.txt": {
+    "title": "About samuelphan.com",
+    "content": "Welcome to samuelphan.com!\n\nThis site is a nostalgic recreation of the Windows XP\ndesktop experience, built with pure HTML, CSS, and\nvanilla JavaScript.\n\nNo frameworks. No build tools. Just the web.\n\nInspired by:\n- Microsoft Windows XP (2001-2014)\n- The blissful simplicity of early 2000s web design\n- XP.css by botoxparty for the Luna theme components\n\nFeatures:\n- Fully functional window manager (drag, resize, min/max/close)\n- Start menu with flyout submenus\n- Taskbar with real-time clock\n- Classic Bliss desktop wallpaper recreation\n- Notepad application with real content\n\nThis project is a playground for web development and\na love letter to an operating system that defined a\ngeneration.\n\nBuilt by Samuel Phan\n(c) 2026 - All rights reserved"
+  }
+}
