@@ -4,7 +4,7 @@
  * Features:
  * - Icons that can be single-clicked to select
  * - Double-click to open windows
- * - Icons: My Photos, My Notes, Projects, About Me, Recycle Bin
+ * - Icons: My Photos, My Notes, Projects, About Me, Recycle Bin, Minesweeper, Cmd, IE
  */
 (function () {
   'use strict';
@@ -14,7 +14,10 @@
     { id: 'my-notes',   label: 'My Notes',   icon: '📝', color: '#2196F3' },
     { id: 'projects',   label: 'Projects',   icon: '💼', color: '#FF9800' },
     { id: 'about-me',   label: 'About Me',   icon: '👤', color: '#9C27B0' },
-    { id: 'recycle-bin', label: 'Recycle Bin', icon: '🗑️', color: '#607D8B' }
+    { id: 'recycle-bin', label: 'Recycle Bin', icon: '🗑️', color: '#607D8B' },
+    { id: 'minesweeper', label: 'Minesweeper', icon: '💣', color: '#808080' },
+    { id: 'command-prompt', label: 'Command Prompt', icon: '💻', color: '#000' },
+    { id: 'internet-explorer', label: 'Internet Explorer', icon: 'e', color: '#1a6bba' }
   ];
 
   var selectedId = null;
@@ -31,7 +34,6 @@
       iconEl.className = 'desktop-icon';
       iconEl.dataset.iconId = item.id;
 
-      // Self-drawn SVG icon (text-based emoji fallback with colored background)
       var iconContent = document.createElement('div');
       iconContent.className = 'icon-placeholder';
       iconContent.style.cssText =
@@ -95,6 +97,21 @@
       return;
     }
 
+    // Check if this is a bonus app that has its own launch function
+    if (item.id === 'minesweeper' && window.launchMinesweeper) {
+      window.launchMinesweeper();
+      return;
+    }
+    if (item.id === 'command-prompt' && window.launchCommandPrompt) {
+      window.launchCommandPrompt();
+      return;
+    }
+    if (item.id === 'internet-explorer' && window.launchInternetExplorer) {
+      window.launchInternetExplorer();
+      return;
+    }
+
+    // Default: show placeholder content for the original desktop icons
     var content = getDefaultContent(item.id);
     var title = getDefaultTitle(item.id);
     var iconDataUri = 'data:image/svg+xml,' + encodeURIComponent(
@@ -121,7 +138,10 @@
       'my-notes': 'My Notes',
       'projects': 'Projects',
       'about-me': 'About Me',
-      'recycle-bin': 'Recycle Bin'
+      'recycle-bin': 'Recycle Bin',
+      'minesweeper': 'Minesweeper',
+      'command-prompt': 'Command Prompt',
+      'internet-explorer': 'Internet Explorer'
     };
     return titles[id] || 'Window';
   }
