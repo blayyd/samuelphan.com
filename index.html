@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/window-manager.css">
   <link rel="stylesheet" href="css/taskbar.css">
   <link rel="stylesheet" href="css/start-menu.css">
+  <link rel="stylesheet" href="css/apps.css">
 
   <style>
     /* Ensure XP.css styles don't break full-viewport layout */
@@ -48,8 +49,14 @@
       <div class="quick-launch-icon" data-app="launchNotepad" title="Notepad">
         <span style="font-size:18px;">📝</span>
       </div>
-      <div class="quick-launch-icon" data-app="" title="Command Prompt (coming soon)">
-        <span style="font-size:18px;">💻</span>
+      <div class="quick-launch-icon" data-app="launchInternetExplorer" title="Internet Explorer">
+        <span style="font-size:18px;color:#1a6bba;font-weight:bold;font-family:serif;font-style:italic;">e</span>
+      </div>
+      <div class="quick-launch-icon" data-app="launchCommandPrompt" title="Command Prompt">
+        <span style="font-size:16px;">💻</span>
+      </div>
+      <div class="quick-launch-icon" data-app="launchMinesweeper" title="Minesweeper">
+        <span style="font-size:18px;">💣</span>
       </div>
       <div class="taskbar-separator"></div>
     </div>
@@ -119,6 +126,10 @@
   <script src="js/start-menu.js"></script>
   <script src="js/taskbar.js"></script>
   <script src="js/desktop-icons.js"></script>
+  <script src="js/minesweeper.js"></script>
+  <script src="js/command-prompt.js"></script>
+  <script src="js/internet-explorer.js"></script>
+  <script src="js/clippy.js"></script>
   <script src="js/shell.js"></script>
 </body>
 </html>
