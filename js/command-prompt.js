@@ -76,46 +76,40 @@
 
   function pad2(n) { return n < 10 ? '0' + n : '' + n; }
 
-  function buildWrapper() {
-    wrapperEl = document.createElement('div');
-    wrapperEl.className = 'cmd-wrapper';
-    wrapperEl.tabIndex = 0;
+  function buildWrapperHTML() {
+    var html = '' +
+      '<div class="cmd-wrapper">' +
+        '<div class="cmd-output">' +
+          '<div class="cmd-line"><span class="cmd-gray">Microsoft(R) Windows XP</span></div>' +
+          '<div class="cmd-line"><span class="cmd-gray">(C) Copyright 1985-2001 Microsoft Corp.</span></div>' +
+          '<div class="cmd-line"><span class="cmd-gray">C:\\&gt;</span></div>' +
+          '<div class="cmd-line"></div>' +
+        '</div>' +
+        '<div class="cmd-line"><span class="cmd-prompt">' + currentDir.replace(/\\/g, '\\\\') + '&gt;</span><span class="cmd-cursor"></span></div>' +
+      '</div>';
+    return html;
+  }
 
-    outputEl = document.createElement('div');
-    outputEl.className = 'cmd-output';
-    wrapperEl.appendChild(outputEl);
+  function wireAfterRender(root) {
+    wrapperEl = root;
+    outputEl = root.querySelector('.cmd-output');
+    // The input line is the last .cmd-line (not inside .cmd-output)
+    var lines = root.querySelectorAll(':scope > .cmd-line');
+    inputLine = lines[lines.length - 1];
 
-    // Boot message
-    addOutput('<span class="cmd-gray">Microsoft(R) Windows XP</span>');
-    addOutput('<span class="cmd-gray">(C) Copyright 1985-2001 Microsoft Corp.</span>');
-    addOutput('<span class="cmd-gray">' + 'C:\\>'.replace('>', '&gt;') + '</span>');
-    addOutput('');
+    root.addEventListener('keydown', handleKeyDown);
+    root.addEventListener('click', function () { root.focus(); });
 
-    // Input line
-    inputLine = document.createElement('div');
-    inputLine.className = 'cmd-line';
-    wrapperEl.appendChild(inputLine);
-
-    drawPrompt();
-
-    // Keyboard handling
-    wrapperEl.addEventListener('keydown', handleKeyDown);
-
-    // Click to focus
-    wrapperEl.addEventListener('click', function () {
-      wrapperEl.focus();
-    });
-
-    // Cursor blink
     cursorInterval = setInterval(function () {
-      var cursor = wrapperEl.querySelector('.cmd-cursor');
+      var cursor = root.querySelector('.cmd-cursor');
       if (cursor) {
         cursor.style.display = cursorVisible ? 'inline-block' : 'none';
         cursorVisible = !cursorVisible;
       }
     }, 500);
 
-    return wrapperEl;
+    // Focus
+    setTimeout(function () { root.focus(); }, 100);
   }
 
   function drawPrompt() {
@@ -466,9 +460,7 @@
 
   // --- Launch ---
   function launchCommandPrompt() {
-    var wrapper = buildWrapper();
-    // Focus after DOM insertion
-    setTimeout(function () { wrapper.focus(); }, 50);
+    var html = buildWrapperHTML();
 
     window.XPDesktop.WindowManager.createWindow({
       title: 'C:\\WINDOWS\\system32\\cmd.exe',
@@ -479,12 +471,18 @@
         '<rect x="8" y="22" width="16" height="2" fill="#c0c0c0"/>' +
         '</svg>'
       ),
-      content: wrapper.outerHTML,
+      content: html,
       width: 650,
       height: 400,
       x: 180,
       y: 120
     });
+
+    // Wire events after DOM insertion
+    setTimeout(function () {
+      var root = document.querySelector('.cmd-wrapper');
+      if (root) wireAfterRender(root);
+    }, 50);
   }
 
   // Export
